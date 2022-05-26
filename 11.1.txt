@@ -1,0 +1,19 @@
+I chose to write about a Python app.
+
+Tools for linting:
+- flake8 (identifies style errors, but it does not automatically fix them)
+- black (as opposed to flake8, this one does reformat the code to make it easier to read and maintain)
+
+Tools for testing:
+- pytest (easy to get started with, and easy to scale for when the app grows)
+- cypress (you see the live execution of the tests and are even able to record and replay them, so it is easier to spot when the faulty action happens)
+- codecov (compute code coverage from the tests)
+
+Tools for building:
+- ActiveState Platform (universal build tool for Windows, Linux, and macOS)
+- virtualenv
+- buildout
+
+Besides Jenkins and Github Actions, another CI tool we can use is Bitbucket Pipelines. This one also provided source control (like GitHub) and shows the duration of each step in the pipeline, so it's easier to spot bottlenecks or parts which can be improved. However, it has only 50mins / month of free usage. Another solution would be Travis CI, which is completely free for open-source projects.
+
+Lastly, I would use a cloud-based solution for this app, so we can skip setting up the environment. The disadvantage of resource limitation is not impeding, because the Python app I have in mind will be rather small and not need to support millions of users (more like a few thousands).
