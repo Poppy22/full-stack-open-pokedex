@@ -24,6 +24,16 @@ jobs:
         run: npm run test
       - name: build
         run: npm run build
+  tag_release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    needs: [simple_deployment_pipeline]
+    steps:
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
   build:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
@@ -34,8 +44,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: pokemon-app22
           heroku_email: a@b.c
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@1.36.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: patch
