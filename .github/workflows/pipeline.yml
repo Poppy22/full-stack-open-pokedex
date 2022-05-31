@@ -26,7 +26,7 @@ jobs:
         run: npm run build
   tag_release:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ', '), '#skip')}}
     needs: [simple_deployment_pipeline]
     steps:
       - name: Bump version and push tag
