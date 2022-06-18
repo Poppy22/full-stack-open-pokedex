@@ -4,8 +4,6 @@ on:
   push:
       branches:
         - new-branch
-  schedule:
-    - cron: '* 20 * * *'
 
 jobs:
   healthcheck:
